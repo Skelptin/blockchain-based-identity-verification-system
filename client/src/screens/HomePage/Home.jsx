@@ -23,9 +23,9 @@ const Home = () => {
                         <div className='box'></div>
                         <div className='text-left'>
                             <p className='flex flex-col gap-2 text-sm sm:text-lg   '>
-                                <p>Insecure about who has access to your data</p>
-                                <p>Want to show only the relevant data</p>
-                                <p>Revolutionizing Trust: Introducing Our <span className='font-semibold'>Blockchain Verification System</span></p>
+                                <span>Insecure about who has access to your data</span>
+                                <span>Want to show only the relevant data</span>
+                                <span>Revolutionizing Trust: Introducing Our <span className='font-semibold'>Blockchain Verification System</span></span>
 
                             </p>
 
@@ -46,7 +46,7 @@ const Home = () => {
                             >
                                 Explore
                             </Button>
-
+                            {/* 
                             <Button
                                 sx={{
                                     border: 'solid 1px',
@@ -57,7 +57,7 @@ const Home = () => {
                                 }}
                             >
                                 Create
-                            </Button>
+                            </Button> */}
 
                         </div>
 

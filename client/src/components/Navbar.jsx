@@ -2,13 +2,15 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '@mui/material'
 import { Drawer } from "@mui/material";
-
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { ethers } from 'ethers';
 
 const Navbar = () => {
 
 
     const [openDrawer, setOpenDrawer] = useState(false);
+    const [address, setAddress] = useState('')
+    
 
     const toggleDrawer = () => {
         setOpenDrawer(!openDrawer);
@@ -27,10 +29,11 @@ const Navbar = () => {
         if (window.ethereum) {
             console.log('Detected')
             try {
-                const accounts = await window.ethereum.request({
+                const account = await window.ethereum.request({
                     method: "eth_requestAccounts"
                 })
-                console.log(accounts)
+                setAddress(account)
+                
             } catch (err) {
                 console.log(err)
             }
@@ -39,6 +42,15 @@ const Navbar = () => {
         }
     }
 
+    // const connectWallet = async () => {
+    //     if (typeof window.ethereum !== 'undefined') {
+    //         await requestAccount();
+    //         provider = new ethers.BrowserProvider(window.ethereum)
+    //         console.log(provider);
+    //     }
+    // };
+
+  
 
 
     return (
@@ -66,6 +78,8 @@ const Navbar = () => {
                             </div>
 
                             <div>
+                            {/* <button onClick={connectWallet}>dada</button> */}
+
                                 <Button
                                     onClick={() => requestAccount()}
                                     sx={{
