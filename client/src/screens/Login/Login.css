@@ -1,0 +1,33 @@
+.loginBox {
+    border: 1px solid;
+    width: 40rem;
+    height: 30rem;
+    border-radius: 5rem;
+    gap: 10px;
+    background: rgb(91, 105, 101);
+    background: linear-gradient(336deg, rgba(91, 105, 101, 1) 40%, rgba(0, 0, 0, 1) 97%, rgba(0, 0, 0, 1) 100%);
+}
+
+.hand {
+    opacity: 80%;
+
+}
+
+
+.metamask {
+    background-color: white;
+
+}
+
+.metamaskName {
+    color: whitesmoke;
+    font-size: larger;
+    letter-spacing: 0.3rem;
+}
+
+
+.spotify {}
+
+.spotifyName {
+    color: white;
+}

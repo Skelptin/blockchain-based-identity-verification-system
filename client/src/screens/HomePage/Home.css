@@ -1,0 +1,136 @@
+/* Home.css */
+
+.leftSection {
+    position: relative;
+    z-index: 1;
+}
+
+.box {
+    content: '';
+    margin-left: 5rem;
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 30%;
+    rotate: 20deg;
+    background-color: rgba(4, 0, 255, 0.7);
+    filter: blur(120px);
+    width: 50rem;
+    height: 25rem;
+    border-radius: 20rem 120rem;
+    box-shadow: 0 0 20px rgba(112, 0, 255, 0.7);
+
+}
+
+.rightSection {
+    position: relative;
+    z-index: 1;
+}
+
+
+.glow {
+    content: '';
+    margin-left: 5rem;
+    position: absolute;
+    top: 5rem;
+    left: 1;
+    right: 2;
+    bottom: 0;
+    z-index: -1;
+
+    background-color: rgba(174, 0, 255, 0.7);
+    filter: blur(120px);
+    opacity: 50%;
+    width: 10rem;
+    height: 40rem;
+    border-radius: 20rem 40rem;
+    box-shadow: 0 0 20px rgba(112, 0, 255, 0.7);
+
+}
+
+.glow2 {
+    content: '';
+    margin-left: 5rem;
+    position: absolute;
+    top: 26rem;
+    left: 1;
+    right: 20rem;
+    bottom: 0;
+    z-index: -1;
+
+    background-color: rgba(174, 0, 255, 0.7);
+    filter: blur(120px);
+    opacity: 50%;
+    width: 10rem;
+    height: 30rem;
+    border-radius: 20rem 40rem;
+    box-shadow: 0 0 20px rgba(112, 0, 255, 0.7);
+
+}
+
+.card {
+    margin-top: -1rem;
+    position: absolute;
+    border: solid 1px;
+    padding: 1rem;
+    max-width: 200px;
+    border-radius: 1rem;
+    overflow: hidden;
+    transform: skew(-5deg, -4deg);
+    backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.card p {
+    margin: 0;
+}
+
+.square {
+    /* rotate: 4deg; */
+    border: 1px solid;
+    background: transparent;
+    border-radius: 1rem;
+    transform: skew(-5deg, -4deg);
+    height: 20rem;
+    width: 25rem;
+    backdrop-filter: blur(100px);
+    background-color: rgba(255, 255, 255, 0.023);
+    position: absolute;
+    z-index: -1;
+    filter: drop-shadow(100px);
+}
+
+.square2 {
+    /* rotate: 4deg; */
+    border: 1px solid;
+    background: transparent;
+    border-radius: 1rem;
+    transform: skew(-5deg, -4deg);
+    height: 35rem;
+    width: 25rem;
+    backdrop-filter: blur(100px);
+    background-color: rgba(255, 255, 255, 0.023);
+    position: absolute;
+    z-index: -1;
+}
+
+@keyframes skewAnimation {
+    0% {
+        transform: skew(-5deg, -4deg);
+        
+    }
+    50% {
+        transform: skew(5deg, 4deg); /* Skewing in the opposite direction */
+    }
+    100% {
+        transform: skew(-10deg, -4deg);
+        
+    }
+}
+
+.homewall{
+    animation: skewAnimation 3s infinite; /* Adjust the duration and iteration as needed */
+}
