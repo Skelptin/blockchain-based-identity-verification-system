@@ -6,6 +6,7 @@
 }
 
 .box {
+    
     content: '';
     margin-left: 5rem;
     position: absolute;
@@ -16,10 +17,10 @@
     z-index: -1;
     opacity: 30%;
     rotate: 20deg;
-    background-color: rgba(4, 0, 255, 0.7);
+    background-color: rgba(4, 0, 255, 1);
     filter: blur(120px);
-    width: 50rem;
-    height: 25rem;
+    width: 40vw;
+    height: 30vh;
     border-radius: 20rem 120rem;
     box-shadow: 0 0 20px rgba(112, 0, 255, 0.7);
 
@@ -29,6 +30,11 @@
     position: relative;
     z-index: 1;
 }
+
+.glo {
+    text-shadow:1px 1px 10px #3f56d8, 1px 1px 1px rgb(61, 76, 83);
+}
+
 
 
 .glow {
@@ -40,8 +46,7 @@
     right: 2;
     bottom: 0;
     z-index: -1;
-
-    background-color: rgba(174, 0, 255, 0.7);
+    background-color: rgba(174, 0, 255, 1);
     filter: blur(120px);
     opacity: 50%;
     width: 10rem;
@@ -115,22 +120,4 @@
     background-color: rgba(255, 255, 255, 0.023);
     position: absolute;
     z-index: -1;
-}
-
-@keyframes skewAnimation {
-    0% {
-        transform: skew(-5deg, -4deg);
-        
-    }
-    50% {
-        transform: skew(5deg, 4deg); /* Skewing in the opposite direction */
-    }
-    100% {
-        transform: skew(-10deg, -4deg);
-        
-    }
-}
-
-.homewall{
-    animation: skewAnimation 3s infinite; /* Adjust the duration and iteration as needed */
 }

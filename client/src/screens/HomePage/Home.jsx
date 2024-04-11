@@ -7,21 +7,23 @@ import HomeAnimation from '../../components/HomeAnimation';
 import './Home.css'
 
 const Home = () => {
+
+    console.log(localStorage.getItem('walletAddress'))
     return (
         <div className=" text-white">
 
 
             <section>
-                <div className='flex flex-wrap' style={{ marginTop: '7rem' }}>
+                <div className='flex flex-wrap flex-col-reverse sm:flex-nowrap sm:flex-row mt-[6%]' >
 
-                    <div className='leftSection w-1/2'>
+                    <div className='leftSection w-full sm:w-1/2'>
                         <div className='flex desc' >
-                            <h1 className='text-5xl sm:text-9xl text-left font-black' >
+                            <h1 className='glo text-5xl sm:text-9xl text-left font-black' >
                                 Who Are <br />You?
                             </h1>
                         </div>
                         <div className='box'></div>
-                        <div className='text-left'>
+                        <div className='text-left mt-5'>
                             <p className='flex flex-col gap-2 text-sm sm:text-lg   '>
                                 <span>Insecure about who has access to your data</span>
                                 <span>Want to show only the relevant data</span>
@@ -81,9 +83,9 @@ const Home = () => {
 
                     </div>
 
-                    <div className='rigthSection'>
+                    <div className='rigthSection '>
                         <div className='mt-10 sm:mt-15 '>
-                            <div className='glow'></div>
+                            
                             <div className='flex justify-end '>
 
                                 <div className='card bg-opacity-40 font-bold'>
@@ -103,11 +105,12 @@ const Home = () => {
 
                             </div> */}
                             <div className=''>
+                            <div className='glow'></div>
                                 <HomeAnimation />
                             </div>
 
 
-                            {/* <div className='glow2'></div> */}
+                            <div className='glow2'></div>
                         </div>
                     </div>
                 </div>

@@ -4,18 +4,12 @@ import { Button } from '@mui/material'
 import { Drawer } from "@mui/material";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { ethers } from 'ethers';
+import Sidebar from './Sidebar';
 
 const Navbar = () => {
 
 
-    const [openDrawer, setOpenDrawer] = useState(false);
     const [address, setAddress] = useState('')
-    
-
-    const toggleDrawer = () => {
-        setOpenDrawer(!openDrawer);
-    };
-
 
     const navlinks = [
         { name: "Marketplace", link: "/marketplace" },
@@ -33,7 +27,7 @@ const Navbar = () => {
                     method: "eth_requestAccounts"
                 })
                 setAddress(account)
-                
+
             } catch (err) {
                 console.log(err)
             }
@@ -50,7 +44,7 @@ const Navbar = () => {
     //     }
     // };
 
-  
+
 
 
     return (
@@ -78,7 +72,7 @@ const Navbar = () => {
                             </div>
 
                             <div>
-                            {/* <button onClick={connectWallet}>dada</button> */}
+                                {/* <button onClick={connectWallet}>dada</button> */}
 
                                 <Button
                                     onClick={() => requestAccount()}
@@ -100,50 +94,8 @@ const Navbar = () => {
                         </div>
                     </div>
 
-
-                    <div className="sm:hidden">
-                        <button onClick={toggleDrawer}>
-                            <svg
-                                className="w-6 h-6"
-                                fill="none"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path d="M4 6h16M4 12h16m-7 6h7"></path>
-                            </svg>
-                        </button>
-
-                        <Drawer anchor="right" open={openDrawer} onClose={toggleDrawer}>
-                            <div className='p-4 grid items-center'>
-                                <div className='flex items-center justify-between w-40 '>
-
-                                    <MdKeyboardDoubleArrowRight onClick={() => setOpenDrawer(false)} className='pointer' />
-                                    {/* <Link to="/profile">
-                  {currentUser ? (
-                    <img src={currentUser.avatar} alt="profile" width="35px" className="rounded-3xl h-7 w-7 object-cover" />
-                  ) : (
-                    <Link to={'/signin'} variant='outline' className='rounded-xl'>
-                      Sign In
-                    </Link>
-                  )}
-                </Link> */}
-
-                                </div>
-                                <ul className='flex flex-col gap-2 mt-5'>
-                                    {
-                                        navlinks.map(({ name, link }) => (
-                                            <li key={link}>
-                                                <Link to={link}>{name}</Link>
-                                            </li>
-                                        ))
-                                    }
-                                </ul>
-                            </div>
-                        </Drawer>
-
+                    <div className='sm:hidden'>
+                        <Sidebar />
                     </div>
                 </div>
             </div>
