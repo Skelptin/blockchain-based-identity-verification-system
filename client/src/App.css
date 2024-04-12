@@ -1,7 +1,7 @@
 #root {
 
   margin: 0 auto;
-  padding: 1rem;
+
   text-align: center;
   color: white;
 }
@@ -12,6 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
+  height: 100%;
 }
 
 

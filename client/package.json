@@ -13,12 +13,15 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.14",
-    "ethers": "^6.11.1",
+    "@reduxjs/toolkit": "^2.2.3",
+    "@thirdweb-dev/sdk": "^4.0.62",
+    "ethers": "^5.7.2",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.22.3",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

@@ -15,7 +15,7 @@ const Sidebar = () => {
     const navlinks = [
         { name: "Marketplace", link: "/marketplace" },
         { name: "Community", link: "/community" },
-        { name: "About Us", link: "/create" },
+        { name: "About Us", link: "/about-us" },
     ]
 
     return (

@@ -1,24 +1,43 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Button } from '@mui/material'
-import { Drawer } from "@mui/material";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { ethers } from 'ethers';
 import Sidebar from './Sidebar';
+
+import { ethers } from 'ethers';
+import { createThirdwebClient, } from "thirdweb";
+import { darkTheme, ConnectButton } from "thirdweb/react";
+import { createWallet, walletConnect } from "thirdweb/wallets";
+
+import { useDispatch } from 'react-redux';
+import { setAddress } from '../store/wallet/walletSlice';
+
+
+import './Navbar.css'
+
+const client = createThirdwebClient({
+    clientId: "85132d307848b9042fd6ed99d417915a",
+});
+
+const wallets = [
+    createWallet("io.metamask"),
+    createWallet("com.coinbase.wallet"),
+    walletConnect(),
+];
+
+
 
 const Navbar = () => {
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const [address, setAddress] = useState('')
 
     const navlinks = [
         { name: "Marketplace", link: "/marketplace" },
         { name: "Community", link: "/community" },
-        { name: "About Us", link: "/create" },
+        { name: "About Us", link: "/about-us" },
     ]
 
     const requestAccount = async () => {
-
 
         if (window.ethereum) {
             console.log('Detected')
@@ -26,8 +45,8 @@ const Navbar = () => {
                 const account = await window.ethereum.request({
                     method: "eth_requestAccounts"
                 })
-                setAddress(account)
-
+                dispatch(setAddress(account));
+                navigate('/verification-page')
             } catch (err) {
                 console.log(err)
             }
@@ -36,29 +55,26 @@ const Navbar = () => {
         }
     }
 
-    // const connectWallet = async () => {
-    //     if (typeof window.ethereum !== 'undefined') {
-    //         await requestAccount();
-    //         provider = new ethers.BrowserProvider(window.ethereum)
-    //         console.log(provider);
-    //     }
-    // };
-
-
+    const connectWallet = async () => {
+        if (typeof window.ethereum !== 'undefined') {
+            await requestAccount();
+            provider = new ethers.web(window.ethereum)
+            console.log(provider);
+        }
+    };
 
 
     return (
         <nav className=''>
-            <div className='leftNav flex justify-between sm:justify-around '>
-                <div>
+            <div className='leftNav flex justify-between items-center p-4 sm:justify-between '>
+                <Link to={'/'}>
                     LOGO
-                </div>
+                </Link>
 
                 <div className='rightNav flex items-center justify-between '>
                     <div className="hidden sm:block">
                         <div className='flex items-center justify-between '>
                             <div className='flex'>
-
                                 <ul className='flex gap-10 md:text-sm'>
                                     {
                                         navlinks.map(({ name, link }) => (
@@ -71,25 +87,23 @@ const Navbar = () => {
 
                             </div>
 
-                            <div>
+                            <div className='ml-5'>
                                 {/* <button onClick={connectWallet}>dada</button> */}
+                                <ConnectButton
+                                    onConnect={() => requestAccount()}
+                                    className='bg-red-800 text-white'
+                                    client={client}
+                                    wallets={wallets}
+                                    theme={darkTheme({
+                                        colors: {
+                                            modalBg: "#000000",
+                                            dropdownBg: "#000000",
+                                        },
+                                    })}
+                                    connectModal={{ size: "wide" }}
 
-                                <Button
-                                    onClick={() => requestAccount()}
-                                    sx={{
-                                        background: "#2F80ED",
-                                        color: 'white',
-                                        borderRadius: '5rem',
-                                        marginLeft: '2rem',
-                                        width: '10rem',
-                                        fontSize: '0.8rem',
-                                        '&:hover': {
-                                            backgroundColor: '#2670d4'
-                                        }
-                                    }}
-                                >
-                                    Connect Wallet
-                                </Button>
+                                />
+
                             </div>
                         </div>
                     </div>

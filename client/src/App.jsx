@@ -9,7 +9,7 @@ function App() {
 
   return (
 
-    <div id='root'>
+    <div >
 
       <BrowserRouter>
         <header>

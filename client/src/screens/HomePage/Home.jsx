@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Button } from '@mui/material';
-
+import { Link } from 'react-router-dom';
 import HomeAnimation from '../../components/HomeAnimation';
 // import LunchBreak from '../../assets/lunchbreak.svg';
 import './Home.css'
@@ -10,9 +10,7 @@ const Home = () => {
 
     console.log(localStorage.getItem('walletAddress'))
     return (
-        <div className=" text-white">
-
-
+        <div className=" text-white p-5">
             <section>
                 <div className='flex flex-wrap flex-col-reverse sm:flex-nowrap sm:flex-row mt-[6%]' >
 
@@ -24,7 +22,7 @@ const Home = () => {
                         </div>
                         <div className='box'></div>
                         <div className='text-left mt-5'>
-                            <p className='flex flex-col gap-2 text-sm sm:text-lg   '>
+                            <p className='flex flex-col gap-2 text-sm sm:text-lg text-slate-200   '>
                                 <span>Insecure about who has access to your data</span>
                                 <span>Want to show only the relevant data</span>
                                 <span>Revolutionizing Trust: Introducing Our <span className='font-semibold'>Blockchain Verification System</span></span>
@@ -34,31 +32,32 @@ const Home = () => {
                         </div>
 
                         <div className='flex gap-4 mt-10'>
-                            <Button
-                                sx={{
-                                    background: "#2F80ED",
-                                    color: 'white',
-                                    borderRadius: '5rem',
-                                    width: { xs: '6rem', md: '8rem' },
-                                    '&:hover': {
-                                        backgroundColor: '#2670d4'
-                                    }
-                                }}
-                                className='bg-blue-600 rounded-full p-3 hover:opacity-90'
-                            >
-                                Explore
-                            </Button>
-                            {/* 
-                            <Button
+                            <Link to={'/verification-page'}>
+                                <Button
+                                    sx={{
+                                        background: "#2F80ED",
+                                        color: 'white',
+                                        borderRadius: '5rem',
+                                        width: { xs: '6rem', md: '8rem' },
+                                        '&:hover': {
+                                            backgroundColor: '#2670d4'
+                                        }
+                                    }}
+                                    className='bg-blue-600 rounded-full p-3 hover:opacity-90'
+                                >
+                                    Explore
+                                </Button>
+                            </Link>
+                            {/* <Button
                                 sx={{
                                     border: 'solid 1px',
                                     background: 'transparent',
                                     color: 'white',
                                     borderRadius: '5rem',
-                                    width: { xs: '5rem', md: '8rem' },
+                                    width: { xs: '9rem', md: '9rem' },
                                 }}
                             >
-                                Create
+                                Documentation
                             </Button> */}
 
                         </div>
@@ -85,7 +84,7 @@ const Home = () => {
 
                     <div className='rigthSection '>
                         <div className='mt-10 sm:mt-15 '>
-                            
+
                             <div className='flex justify-end '>
 
                                 <div className='card bg-opacity-40 font-bold'>
@@ -105,7 +104,7 @@ const Home = () => {
 
                             </div> */}
                             <div className=''>
-                            <div className='glow'></div>
+                                <div className='glow'></div>
                                 <HomeAnimation />
                             </div>
 
