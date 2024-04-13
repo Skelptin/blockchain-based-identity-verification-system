@@ -8,7 +8,7 @@ import ErrorPage from '../screens/ErrorPage/ErrorPage'
 import VerificationPage from '../screens/VerificationPage/VerificationPage'
 import CreateUser from '../screens/VerificationPage/screens/CreateUser'
 
-
+import AccessRequest from '../screens/VerificationPage/screens/AccessRequest'
 import PrivateRoute from '../components/PrivateRoutes'
 import VerifyUsers from '../screens/VerificationPage/screens/VerifyUsers'
 
@@ -30,7 +30,7 @@ const routes = () => {
                 <Route exact path='/verification-page' element={<VerificationPage />} />
                 <Route exact path='/verification-page/create-user' element={<CreateUser />} />
                 <Route exact path='/verification-page/verify-user' element={<VerifyUsers />} />
-
+                <Route exact path='/verification-page/access-request' element={<AccessRequest />} />
 
             </Route>
 

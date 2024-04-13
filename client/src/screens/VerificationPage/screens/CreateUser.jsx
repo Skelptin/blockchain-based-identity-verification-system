@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { ethers } from 'ethers';
 import { contractAddress, contractABI } from '../../../constants/constants';
 
+
+import { MediaRenderer } from "thirdweb/react";
 import { useSelector } from 'react-redux';
 
 const CreateUser = () => {
@@ -15,7 +17,16 @@ const CreateUser = () => {
   const [dob, setDob] = useState('');
   const [address, setAddress] = useState('');
 
-  const string = "dadadadada"
+  // const { mutateAsync: upload } = useStorageUpload();
+
+  // const uploadData = () => {
+  //   // Get any data that you want to upload
+  //   const dataToUpload = [...];
+
+  //   // And upload the data with the upload function
+  //   const uris = await upload({ data: dataToUpload });
+  // }
+
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -31,13 +42,12 @@ const CreateUser = () => {
         const file = image[0];
         const reader = new FileReader();
         reader.readAsDataURL(file);
-
         reader.onload = async () => {
           // Convert the data URL to a base64-encoded string
           const imageData = reader.result.split(',')[1];
 
           // Call the smart contract function with the base64-encoded image data
-          await contract.createUser(name, dob, address,imageData);
+          await contract.createUser(name, dob, address, imageData);
           console.log('Form data sent to smart contract');
         };
       } catch (error) {
@@ -48,6 +58,15 @@ const CreateUser = () => {
     }
   };
 
+
+  // const { mutateAsync: upload } = useStorageUpload();
+
+  const uploadData = async (e) => {
+    // Get any data that you want to upload
+    const image = e.target.values
+    // And upload the data with the upload function
+    await upload({ data: image });
+  }
 
 
   return (
@@ -84,8 +103,9 @@ const CreateUser = () => {
           />
 
           <label>Image</label>
+
           <input
-            onChange={(e) => setImage(e.target.files)}
+            onChange={uploadData}
             className='p-3 border border-gray-300 rounded w-full'
             type='file'
             id='images'

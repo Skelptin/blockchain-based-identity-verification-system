@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';
 import { contractAddress, contractABI } from '../../../constants/constants';
 
-const VerifyUsers = () => {
+const AccessRequest = () => {
     const navigate = useNavigate();
     const [userAddress, setUserAddress] = useState('');
 
@@ -15,14 +15,13 @@ const VerifyUsers = () => {
         const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
         try {
-
-        const res = await contract.setUserAsValidator(userAddress);
-            console.log('User designated as validator successfully.');
-            console.log(res)
-
+         const res = await contract.sendAccessRequest(userAddress);
+            if(!res.hash){
+                return
+            } 
 
         } catch (error) {
-            console.error('Error setting user as validator:', error);
+            console.error('Error sending access request:', error);
         }
     };
 
@@ -30,7 +29,7 @@ const VerifyUsers = () => {
         <div className='max-w-2xl mx-auto p-5'>
             <div className='flex bg-gray-900 rounded-2xl mt-10 flex-col'>
                 <div className='mt-10 text-3xl'>
-                    <h1 className='font-semibold'>Designate Validator</h1>
+                    <h1 className='font-semibold'>Access Request</h1>
                 </div>
                 <form onSubmit={handleFormSubmit} className='flex flex-col text-left gap-4 mt-10 p-3'>
                     <label>User Address</label>
@@ -50,4 +49,4 @@ const VerifyUsers = () => {
     );
 };
 
-export default VerifyUsers;
+export default AccessRequest;

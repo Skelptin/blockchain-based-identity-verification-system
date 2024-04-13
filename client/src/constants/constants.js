@@ -426,3 +426,5 @@ export const contractABI =[
       "stateMutability": "nonpayable"
     }
   ]
+
+  export const clientId = '85132d307848b9042fd6ed99d417915a'

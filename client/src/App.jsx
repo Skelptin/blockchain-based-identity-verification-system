@@ -15,7 +15,6 @@ function App() {
         <header>
           <Navbar />
         </header>
-
         <Routes />
       </BrowserRouter>
     </div>

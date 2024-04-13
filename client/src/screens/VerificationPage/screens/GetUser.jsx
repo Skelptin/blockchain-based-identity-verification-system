@@ -3,40 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';
 import { contractAddress, contractABI } from '../../../constants/constants';
 
-const VerifyUsers = () => {
-    const navigate = useNavigate();
-    const [userAddress, setUserAddress] = useState('');
+const GetUser = () => {
 
-    const handleFormSubmit = async (e) => {
-        e.preventDefault();
-
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        const contract = new ethers.Contract(contractAddress, contractABI, signer);
-
-        try {
-
-        const res = await contract.setUserAsValidator(userAddress);
-            console.log('User designated as validator successfully.');
-            console.log(res)
-
-
-        } catch (error) {
-            console.error('Error setting user as validator:', error);
-        }
-    };
 
     return (
         <div className='max-w-2xl mx-auto p-5'>
             <div className='flex bg-gray-900 rounded-2xl mt-10 flex-col'>
                 <div className='mt-10 text-3xl'>
-                    <h1 className='font-semibold'>Designate Validator</h1>
+                    <h1 className='font-semibold'>Access Request</h1>
                 </div>
-                <form onSubmit={handleFormSubmit} className='flex flex-col text-left gap-4 mt-10 p-3'>
+                <form className='flex flex-col text-left gap-4 mt-10 p-3'>
                     <label>User Address</label>
                     <input
-                        value={userAddress}
-                        onChange={(e) => setUserAddress(e.target.value)}
                         className='bg-slate-700 rounded-lg h-12 w-full'
                         placeholder='Enter User Address'
                     />
@@ -50,4 +28,4 @@ const VerifyUsers = () => {
     );
 };
 
-export default VerifyUsers;
+export default GetUser;
