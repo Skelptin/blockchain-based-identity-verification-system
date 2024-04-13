@@ -88,8 +88,9 @@ const Navbar = () => {
                             </div>
 
                             <div className='ml-5'>
-                                {/* <button onClick={connectWallet}>dada</button> */}
+                           
                                 <ConnectButton
+
                                     onConnect={() => requestAccount()}
                                     className='bg-red-800 text-white'
                                     client={client}
@@ -101,7 +102,7 @@ const Navbar = () => {
                                         },
                                     })}
                                     connectModal={{ size: "wide" }}
-                                    
+
                                 />
 
                             </div>

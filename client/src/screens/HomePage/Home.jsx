@@ -1,19 +1,29 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import HomeAnimation from '../../components/HomeAnimation';
-// import LunchBreak from '../../assets/lunchbreak.svg';
-import './Home.css'
+import Alert from '../../components/Alert';
+import { useSelector } from 'react-redux';
+import './Home.css';
 
 const Home = () => {
 
-    console.log(localStorage.getItem('walletAddress'))
+    const { activeWallet } = useSelector((state) => state.walletAddress)
+    console.log(activeWallet)
+    const [showSnackbar, setShowSnackbar] = useState(false);
+
+    const handleExplore = () => {
+        if (!activeWallet) {
+
+            setShowSnackbar(true);
+        }
+    };
+
     return (
-        <div className=" text-white p-5">
+        <div className="text-white p-5">
+
             <section>
                 <div className='flex flex-wrap flex-col-reverse sm:flex-nowrap sm:flex-row mt-[6%]' >
-
                     <div className='leftSection w-full sm:w-1/2'>
                         <div className='flex desc' >
                             <h1 className='glo text-5xl sm:text-9xl text-left font-black' >
@@ -26,14 +36,12 @@ const Home = () => {
                                 <span>Insecure about who has access to your data</span>
                                 <span>Want to show only the relevant data</span>
                                 <span>Revolutionizing Trust: Introducing Our <span className='font-semibold'>Blockchain Verification System</span></span>
-
                             </p>
-
                         </div>
-
                         <div className='flex gap-4 mt-10'>
-                            <Link to={'/verification-page'}>
+                            <Link to={showSnackbar ? '' : '/verification-page'}>
                                 <Button
+                                    onClick={handleExplore}
                                     sx={{
                                         background: "#2F80ED",
                                         color: 'white',
@@ -48,20 +56,7 @@ const Home = () => {
                                     Explore
                                 </Button>
                             </Link>
-                            {/* <Button
-                                sx={{
-                                    border: 'solid 1px',
-                                    background: 'transparent',
-                                    color: 'white',
-                                    borderRadius: '5rem',
-                                    width: { xs: '9rem', md: '9rem' },
-                                }}
-                            >
-                                Documentation
-                            </Button> */}
-
                         </div>
-
                         <div className='flex mt-10 gap-5 '>
                             <span>
                                 <p className=''>30B+</p>
@@ -114,7 +109,8 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
+            {/* Render the Snackbar component conditionally */}
+            <Alert message='Connect to wallet' active={!showSnackbar} />
         </div>
     );
 }
