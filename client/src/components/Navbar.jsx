@@ -101,7 +101,7 @@ const Navbar = () => {
                                         },
                                     })}
                                     connectModal={{ size: "wide" }}
-
+                                    
                                 />
 
                             </div>

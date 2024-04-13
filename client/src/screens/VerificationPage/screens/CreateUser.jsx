@@ -1,25 +1,27 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';
 import { contractAddress, contractABI } from '../../../constants/constants';
-
 import { useSelector } from 'react-redux';
 
 const CreateUser = () => {
-
   const navigate = useNavigate();
+  const { address } = useSelector((state) => state.walletAddress);
+  const [formData, setFormData] = useState({
+    image: [],
+    name: '',
+    dob: '',
+    userAddress: '',
+  });
 
-  const { address } = useSelector((state) => state.walletAddress)
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-  console.log(address)
-
-
-  const [image, setImage] = useState([])
-  const [name, setName] = useState('');
-  const [dob, setDob] = useState('');
-  const [userAddress, setUserAddress] = useState('');
-
-  const string = "dadadadada"
+  const handleImageChange = (e) => {
+    setFormData({ ...formData, image: e.target.files });
+  };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -31,17 +33,13 @@ const CreateUser = () => {
       const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
       try {
-
-        const file = image[0];
+        const file = formData.image[0];
         const reader = new FileReader();
         reader.readAsDataURL(file);
 
         reader.onload = async () => {
-          // Convert the data URL to a base64-encoded string
           const imageData = reader.result.split(',')[1];
-
-          // Call the smart contract function with the base64-encoded image data
-          await contract.createUser(name, dob, address, imageData);
+          await contract.createUser(formData.name, formData.dob, address, imageData);
           console.log('Form data sent to smart contract');
         };
       } catch (error) {
@@ -52,8 +50,6 @@ const CreateUser = () => {
     }
   };
 
-
-
   return (
     <div className='max-w-2xl mx-auto p-5'>
       <div className='flex  bg-gray-900 rounded-2xl mt-10  flex-col'>
@@ -61,54 +57,50 @@ const CreateUser = () => {
           <h1 className='font-semibold'>Create User</h1>
         </div>
         <form onSubmit={handleFormSubmit} className='flex flex-col text-left gap-4 mt-10 p-3'>
-
           <label>Name</label>
           <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name='name'
+            value={formData.name}
+            onChange={handleInputChange}
             className='bg-slate-700 rounded-lg h-12 w-full'
             placeholder='Enter Name'
           />
-
-
           <label>Date of Birth</label>
           <input
-            value={dob}
-            onChange={(e) => setDob(e.target.value)}
+            name='dob'
+            value={formData.dob}
+            onChange={handleInputChange}
             className='bg-slate-700 rounded-lg h-12  w-full'
             placeholder='Enter Your DOB'
           />
-
           <label>Address</label>
           <input
-            value={userAddress}
-            onChange={(e) => setUserAddress(e.target.value)}
+            name='userAddress'
+            value={formData.userAddress}
+            onChange={handleInputChange}
             className='bg-slate-700 rounded-lg h-12  w-full'
             placeholder='Enter your Address'
           />
-
           <label>Image</label>
           <input
-            onChange={(e) => setImage(e.target.files)}
+            onChange={handleImageChange}
             className='p-3 border border-gray-300 rounded w-full'
             type='file'
             id='images'
             accept='image/*'
-
           />
-
           <div className='flex gap-5 justify-center'>
-
-            <button className='bg-red-500 hover:opacity-85 p-2 rounded-3xl' type='button' onClick={() => navigate(-1)}>Back</button>
-
-            <button className='border-white bg-blue-500 hover:opacity-85 border p-2 rounded-3xl'> Submit </button>
-
+            <button className='bg-red-500 hover:opacity-85 p-2 rounded-3xl' type='button' onClick={() => navigate(-1)}>
+              Back
+            </button>
+            <button className='border-white bg-blue-500 hover:opacity-85 border p-2 rounded-3xl' type='submit'>
+              Submit
+            </button>
           </div>
         </form>
       </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default CreateUser
+export default CreateUser;

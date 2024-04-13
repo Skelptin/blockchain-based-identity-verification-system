@@ -8,6 +8,10 @@ import ErrorPage from '../screens/ErrorPage/ErrorPage'
 import VerificationPage from '../screens/VerificationPage/VerificationPage'
 import CreateUser from '../screens/VerificationPage/screens/CreateUser'
 
+
+import PrivateRoute from '../components/PrivateRoutes'
+import VerifyUsers from '../screens/VerificationPage/screens/VerifyUsers'
+
 const routes = () => {
     return (
 
@@ -18,10 +22,18 @@ const routes = () => {
             <Route exact path='/marketplace' element></Route>
             <Route exact path='/collection' element></Route>
             <Route exact path='/community' element></Route>
-            <Route exact path='/verification-page' element={<VerificationPage />} />
+
             <Route exact path='/About-us' element={<About />}></Route>
 
-            <Route exact path='/verification-page/create-user' element={<CreateUser/>} />
+            {/* Private Routes  */}
+            <Route element={<PrivateRoute />} >
+                <Route exact path='/verification-page' element={<VerificationPage />} />
+                <Route exact path='/verification-page/create-user' element={<CreateUser />} />
+                <Route exact path='/verification-page/verify-user' element={<VerifyUsers />} />
+
+
+            </Route>
+
 
             <Route exact path='*' element={<ErrorPage />}></Route>
         </Routes>

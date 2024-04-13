@@ -38,7 +38,7 @@ export default function BasicCard() {
                 </Card>
             </Link>
 
-            <Link>
+            <Link to={'/verification-page/verify-user'}>
                 <Card className='hover:opacity-80 flex justify-center flex-col' sx={{
                     width: '25rem',
                     backgroundColor: '#242323',
