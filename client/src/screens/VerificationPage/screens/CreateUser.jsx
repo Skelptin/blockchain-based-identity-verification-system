@@ -3,19 +3,23 @@ import { useNavigate } from 'react-router-dom'
 import { ethers } from 'ethers';
 import { contractAddress, contractABI } from '../../../constants/constants';
 
-
+import { useSelector } from 'react-redux';
 
 const CreateUser = () => {
 
   const navigate = useNavigate();
 
+  const { address } = useSelector((state) => state.walletAddress)
+
+  console.log(address)
+
 
   const [image, setImage] = useState([])
   const [name, setName] = useState('');
   const [dob, setDob] = useState('');
-  const [address, setAddress] = useState('');
+  const [userAddress, setUserAddress] = useState('');
 
-
+  const string = "dadadadada"
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -51,58 +55,58 @@ const CreateUser = () => {
 
 
   return (
-          <div className='max-w-2xl mx-auto p-5'>
-        <div className='flex  bg-gray-900 rounded-2xl mt-10  flex-col'>
-          <div className='mt-10 text-3xl'>
-            <h1 className='font-semibold'>Create User</h1>
-          </div>
-          <form onSubmit={handleFormSubmit} className='flex flex-col text-left gap-4 mt-10 p-3'>
-
-            <label>Name</label>
-            <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className='bg-slate-700 rounded-lg h-12 w-full'
-              placeholder='Enter Name'
-            />
-
-
-            <label>Date of Birth</label>
-            <input
-              value={dob}
-              onChange={(e) => setDob(e.target.value)}
-              className='bg-slate-700 rounded-lg h-12  w-full'
-              placeholder='Enter Your DOB'
-            />
-
-            <label>Address</label>
-            <input
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              className='bg-slate-700 rounded-lg h-12  w-full'
-              placeholder='Enter your Address'
-            />
-
-            <label>Image</label>
-            <input
-              onChange={(e) => setImage(e.target.files)}
-              className='p-3 border border-gray-300 rounded w-full'
-              type='file'
-              id='images'
-              accept='image/*'
-
-            />
-
-            <div className='flex gap-5 justify-center'>
-
-              <button className='bg-red-500 hover:opacity-85 p-2 rounded-3xl' type='button' onClick={() => navigate(-1)}>Back</button>
-
-              <button className='border-white bg-blue-500 hover:opacity-85 border p-2 rounded-3xl'> Submit </button>
-
-            </div>
-          </form>
+    <div className='max-w-2xl mx-auto p-5'>
+      <div className='flex  bg-gray-900 rounded-2xl mt-10  flex-col'>
+        <div className='mt-10 text-3xl'>
+          <h1 className='font-semibold'>Create User</h1>
         </div>
+        <form onSubmit={handleFormSubmit} className='flex flex-col text-left gap-4 mt-10 p-3'>
+
+          <label>Name</label>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className='bg-slate-700 rounded-lg h-12 w-full'
+            placeholder='Enter Name'
+          />
+
+
+          <label>Date of Birth</label>
+          <input
+            value={dob}
+            onChange={(e) => setDob(e.target.value)}
+            className='bg-slate-700 rounded-lg h-12  w-full'
+            placeholder='Enter Your DOB'
+          />
+
+          <label>Address</label>
+          <input
+            value={userAddress}
+            onChange={(e) => setUserAddress(e.target.value)}
+            className='bg-slate-700 rounded-lg h-12  w-full'
+            placeholder='Enter your Address'
+          />
+
+          <label>Image</label>
+          <input
+            onChange={(e) => setImage(e.target.files)}
+            className='p-3 border border-gray-300 rounded w-full'
+            type='file'
+            id='images'
+            accept='image/*'
+
+          />
+
+          <div className='flex gap-5 justify-center'>
+
+            <button className='bg-red-500 hover:opacity-85 p-2 rounded-3xl' type='button' onClick={() => navigate(-1)}>Back</button>
+
+            <button className='border-white bg-blue-500 hover:opacity-85 border p-2 rounded-3xl'> Submit </button>
+
+          </div>
+        </form>
       </div>
+    </div>
 
   )
 }
