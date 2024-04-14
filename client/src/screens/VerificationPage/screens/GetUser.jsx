@@ -32,6 +32,7 @@ const GetUser = () => {
     };
 
     return (
+        <div className='bg-gradient-to-b from-black to-gray-950 min-h-screen'>
         <div className='max-w-2xl mx-auto p-5'>
             <div className='flex bg-gray-900 rounded-2xl mt-10 flex-col'>
                 <div className='mt-10 text-3xl'>
@@ -67,6 +68,7 @@ const GetUser = () => {
             </div>
 
 
+        </div>
         </div>
     );
 };

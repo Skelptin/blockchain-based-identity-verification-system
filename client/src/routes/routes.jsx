@@ -29,12 +29,14 @@ const routes = () => {
 
             {/* Private Routes  */}
             <Route element={<PrivateRoute />} >
+
                 <Route exact path='/verification-page' element={<VerificationPage />} />
                 <Route exact path='/verification-page/create-user' element={<CreateUser />} />
                 <Route exact path='/verification-page/verify-user' element={<VerifyUsers />} />
                 <Route exact path='/verification-page/access-request' element={<AccessRequest />} />
                 <Route exact path='/verification-page/get-user' element={<GetUser />} />
                 <Route exact path='/verification-page/incoming-requests' element={<IncomingRequests />} />
+
             </Route>
 
 

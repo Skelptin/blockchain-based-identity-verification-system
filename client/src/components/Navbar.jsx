@@ -13,8 +13,10 @@ import { setAddress } from '../store/wallet/walletSlice';
 
 import './Navbar.css'
 
+    
+
 const client = createThirdwebClient({
-    clientId: "85132d307848b9042fd6ed99d417915a",
+    clientId: import.meta.env.VITE_THIRDWEB_CLIENTID,
 });
 
 const wallets = [
@@ -68,8 +70,8 @@ const Navbar = () => {
         <nav className=''>
             <div className='leftNav flex justify-between items-center p-4 sm:justify-between '>
                 <Link className='' to={'/'}>
-                    <img 
-                    className='w-[150px] sm:w-[200px] '
+                    <img
+                        className='w-[150px] sm:w-[200px] '
                         src={Logo}
                         alt='Logo'
                     />
