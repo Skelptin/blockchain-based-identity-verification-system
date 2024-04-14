@@ -13,13 +13,9 @@ const AccessRequest = () => {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const contract = new ethers.Contract(contractAddress, contractABI, signer);
-
         try {
-         const res = await contract.sendAccessRequest(userAddress);
-            if(!res.hash){
-                return
-            } 
-
+            const res = await contract.sendAccessRequest(userAddress);
+            console.log('Access request sent successfully.', res.data);
         } catch (error) {
             console.error('Error sending access request:', error);
         }

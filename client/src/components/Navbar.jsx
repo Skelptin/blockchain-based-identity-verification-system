@@ -6,7 +6,7 @@ import { ethers } from 'ethers';
 import { createThirdwebClient, } from "thirdweb";
 import { darkTheme, ConnectButton } from "thirdweb/react";
 import { createWallet, walletConnect } from "thirdweb/wallets";
-
+import Logo from '../assets/Logo.svg'
 import { useDispatch } from 'react-redux';
 import { setAddress } from '../store/wallet/walletSlice';
 
@@ -67,8 +67,12 @@ const Navbar = () => {
     return (
         <nav className=''>
             <div className='leftNav flex justify-between items-center p-4 sm:justify-between '>
-                <Link to={'/'}>
-                    LOGO
+                <Link className='' to={'/'}>
+                    <img 
+                    className='w-[150px] sm:w-[200px] '
+                        src={Logo}
+                        alt='Logo'
+                    />
                 </Link>
 
                 <div className='rightNav flex items-center justify-between '>
@@ -88,7 +92,7 @@ const Navbar = () => {
                             </div>
 
                             <div className='ml-5'>
-                           
+
                                 <ConnectButton
 
                                     onConnect={() => requestAccount()}

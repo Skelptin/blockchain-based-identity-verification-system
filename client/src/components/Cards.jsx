@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { IoIosCreate } from "react-icons/io";
 import { GrValidate } from "react-icons/gr";
 import { MdOutlinePresentToAll } from "react-icons/md";
+import { MdOutlineGetApp } from "react-icons/md";
+import { HiOutlineQueueList } from "react-icons/hi2";
 
 const Cards = () => {
     return (
@@ -50,21 +52,27 @@ const Cards = () => {
                 </div>
             </Link>
 
-
-            <Link className='hover:opacity-80 flex justify-center'>
+            <Link to={'/verification-page/incoming-requests'} className='hover:opacity-80 flex justify-center'>
                 <div className='bg-gray-800 text-white rounded-lg p-4 transform hover:scale-105 transition duration-300 ease-in-out'>
-                    <h2 className="text-2xl font-bold">User Profile</h2>
-                    <p className="text-sm mt-2">User Profile</p>
+                    <div className="flex justify-center">
+                        <HiOutlineQueueList className='text-4xl' />
+                    </div>
+                    <h2 className="text-2xl font-bold">Incoming Requests</h2>
+                    <p className="text-sm mt-2">Manage incoming access requests efficiently within our blockchain identity framework. Review and respond to requests to maintain control over data access.</p>
+                </div>
+            </Link>
+
+            <Link to={'/verification-page/get-user'} className='hover:opacity-80 flex justify-center'>
+                <div className='bg-gray-800 text-white rounded-lg p-4 transform hover:scale-105 transition duration-300 ease-in-out'>
+                    <div className="flex justify-center">
+                        <MdOutlineGetApp className='text-3xl' />
+                    </div>
+                    <h2 className="text-2xl font-bold">Get User Info</h2>
+                    <p className="text-sm mt-2">Retrieve comprehensive user information securely from our blockchain network. Gain insights into user profiles to facilitate seamless interactions.</p>
                 </div>
             </Link>
 
 
-            <Link className='hover:opacity-80 flex justify-center'>
-                <div className='bg-gray-800 text-white rounded-lg p-4 transform hover:scale-105 transition duration-300 ease-in-out'>
-                    <h2 className="text-2xl font-bold">Create User</h2>
-                    <p className="text-sm mt-2">Create User</p>
-                </div>
-            </Link>
 
         </div>
     );

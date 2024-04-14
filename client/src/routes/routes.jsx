@@ -11,6 +11,8 @@ import CreateUser from '../screens/VerificationPage/screens/CreateUser'
 import AccessRequest from '../screens/VerificationPage/screens/AccessRequest'
 import PrivateRoute from '../components/PrivateRoutes'
 import VerifyUsers from '../screens/VerificationPage/screens/VerifyUsers'
+import GetUser from '../screens/VerificationPage/screens/GetUser'
+import IncomingRequests from '../screens/VerificationPage/screens/IncomingRequests'
 
 const routes = () => {
     return (
@@ -31,7 +33,8 @@ const routes = () => {
                 <Route exact path='/verification-page/create-user' element={<CreateUser />} />
                 <Route exact path='/verification-page/verify-user' element={<VerifyUsers />} />
                 <Route exact path='/verification-page/access-request' element={<AccessRequest />} />
-
+                <Route exact path='/verification-page/get-user' element={<GetUser />} />
+                <Route exact path='/verification-page/incoming-requests' element={<IncomingRequests />} />
             </Route>
 
 

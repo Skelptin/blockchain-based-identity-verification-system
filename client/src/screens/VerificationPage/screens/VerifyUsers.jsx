@@ -13,10 +13,10 @@ const VerifyUsers = () => {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const contract = new ethers.Contract(contractAddress, contractABI, signer);
-
+        console.log(provider)
         try {
 
-        const res = await contract.setUserAsValidator(userAddress);
+            const res = await contract.setUserAsValidator(userAddress);
             console.log('User designated as validator successfully.');
             console.log(res)
 
