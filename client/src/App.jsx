@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import './App.css'
 import { BrowserRouter } from 'react-router-dom'
 import Routes from './routes/routes'
-
+import Footer from './screens/Footer/Footer';
 
 function App() {
 
@@ -15,6 +15,10 @@ function App() {
           <Navbar />
         </header>
         <Routes />
+
+        <footer>
+          <Footer />
+        </footer>
       </BrowserRouter>
     </div>
 

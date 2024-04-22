@@ -22,7 +22,7 @@ const AccessRequest = () => {
     };
 
     return (
-        <div className='bg-gradient-to-b from-black to-gray-950 min-h-screen'>
+        <div className='bg-gradient-to-b from-black to-gray-900 min-h-screen'>
 
 
        

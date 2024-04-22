@@ -26,13 +26,13 @@ const Home = () => {
                 <div className='flex flex-wrap flex-col-reverse sm:flex-nowrap sm:flex-row mt-[6%]' >
                     <div className='leftSection w-full sm:w-1/2'>
                         <div className='flex desc' >
-                            <h1 className='glo text-5xl sm:text-9xl text-left font-black' >
-                                Who Are <br />You?
+                            <h1 className='glo text-5xl sm:text-8xl text-left font-black' >
+                                Empowering Trust, Securing Identities
                             </h1>
                         </div>
                         <div className='box'></div>
                         <div className='text-left mt-5'>
-                            <p className='flex flex-col gap-2 text-sm sm:text-lg text-slate-200   '>
+                            <p className='flex flex-col gap-2 text-sm sm:text-base text-slate-200   '>
                                 <span>Insecure about who has access to your data</span>
                                 <span>Want to show only the relevant data</span>
                                 <span>Revolutionizing Trust: Introducing Our <span className='font-semibold'>Blockchain Verification System</span></span>
@@ -111,6 +111,10 @@ const Home = () => {
             </section>
             {/* Render the Snackbar component conditionally */}
             <Alert message='Connect to wallet' active={!showSnackbar} />
+
+            <div className=''>
+
+            </div>
         </div>
     );
 }
