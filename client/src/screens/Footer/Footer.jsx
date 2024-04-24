@@ -10,9 +10,9 @@ const Footer = () => {
 
 
     return (
-        <div className='text-sm  py-4 text-left'>
+        <div className='text-sm text-left'>
             <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700" />
-            <div className='mt-10 flex flex-wrap md:flex-row justify-between mx-auto max-w-6xl'>
+            <div className='mt-10 p-4 flex flex-wrap md:flex-row justify-between mx-auto max-w-6xl'>
 
                 <div className="text-white mb-6 md:mb-0">
                     <p className='font-bold mb-2'>Info</p>
@@ -84,7 +84,7 @@ const Footer = () => {
             </div>
 
             <div className='flex flex-col items-center justify-center text-slate-400 m-10'>
-                © {year} Copyright Trustnet
+                © {year} Copyright TrustNet
                 <div className='mt-3 flex items-center'>
                     <a href='https://github.com/Skelptin/blockchain-based-identity-verification-system'>
                         <FaGithub className='w-10 h-4 ' />

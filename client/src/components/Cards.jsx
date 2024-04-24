@@ -14,7 +14,7 @@ const Cards = () => {
                     <div className="flex justify-center">
                         <IoIosCreate className='text-3xl' />
                     </div>
-                    <h2 className="text-2xl font-bold mt-2">Create User</h2>
+                    <h2 className="text-2xl font-bold mt-2">Create Account / Your Account</h2>
                     <p className="text-sm mt-2">
                         Create your User ID and get started with our platform.
                         Whether you're a new user or need to establish a fresh account,

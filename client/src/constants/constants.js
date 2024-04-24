@@ -1,4 +1,4 @@
-export const contractAddress = '0x3069Df81683120BFb7835e054557CB299190474e'
+export const contractAddress = '0x68901468F8C388dFd2C7D7c3eCE4Cc32d3450747'
 
 export const contractABI =[
   {
@@ -268,6 +268,51 @@ export const contractABI =[
   },
   {
     "type": "function",
+    "name": "myInfo",
+    "inputs": [],
+    "outputs": [
+      {
+        "type": "tuple",
+        "name": "",
+        "components": [
+          {
+            "type": "string",
+            "name": "name",
+            "internalType": "string"
+          },
+          {
+            "type": "uint256",
+            "name": "dateOfBirth",
+            "internalType": "uint256"
+          },
+          {
+            "type": "string",
+            "name": "addr",
+            "internalType": "string"
+          },
+          {
+            "type": "string",
+            "name": "image",
+            "internalType": "string"
+          },
+          {
+            "type": "bool",
+            "name": "isVerified",
+            "internalType": "bool"
+          },
+          {
+            "type": "string",
+            "name": "validationToken",
+            "internalType": "string"
+          }
+        ],
+        "internalType": "struct IVM_Final.userInfo"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "owner",
     "inputs": [],
     "outputs": [
@@ -426,4 +471,3 @@ export const contractABI =[
     "stateMutability": "nonpayable"
   }
 ]
-

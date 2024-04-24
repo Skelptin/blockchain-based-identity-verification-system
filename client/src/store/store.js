@@ -2,9 +2,10 @@ import { configureStore, createSlice, combineReducers } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import walletAddressReducer from './wallet/walletSlice';
+import userReducer from './user/userSlice'
 
 
-const rootReducer = combineReducers({ walletAddress: walletAddressReducer })
+const rootReducer = combineReducers({ walletAddress: walletAddressReducer, user: userReducer })
 
 const persistConfig = {
   key: 'root',

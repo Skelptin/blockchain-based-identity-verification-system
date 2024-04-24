@@ -34,9 +34,11 @@ const Navbar = () => {
 
 
     const navlinks = [
+        { name: "Home", link: "/" },
         { name: "Marketplace", link: "/marketplace" },
         { name: "Community", link: "/community" },
         { name: "About Us", link: "/about-us" },
+  
     ]
 
     const requestAccount = async () => {

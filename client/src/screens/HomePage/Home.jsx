@@ -20,7 +20,7 @@ const Home = () => {
     };
 
     return (
-        <div className="text-white p-5">
+        <div className="text-white p-5 ">
 
             <section>
                 <div className='flex flex-wrap flex-col-reverse sm:flex-nowrap sm:flex-row mt-[6%]' >
@@ -54,6 +54,21 @@ const Home = () => {
                                     className='bg-blue-600 rounded-full p-3 hover:opacity-90'
                                 >
                                     Explore
+                                </Button>
+                            </Link>
+                            <Link to='/verification-page/create-user'>
+                                <Button
+                                    sx={{
+                                        border: 'solid 1px',
+                                        background: 'transparent',
+                                        color: 'white',
+                                        borderRadius: '5rem',
+
+                                        width: '10rem',
+
+                                    }}
+                                >
+                                    Create Account
                                 </Button>
                             </Link>
                         </div>
