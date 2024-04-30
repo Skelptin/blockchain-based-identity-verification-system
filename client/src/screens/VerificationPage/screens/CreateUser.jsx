@@ -6,7 +6,7 @@ import { contractAddress, contractABI } from '../../../constants/constants';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { useSelector, useDispatch } from 'react-redux';
-import UserDetail from '../../../components/UserDetail';
+
 
 const CreateUser = () => {
   const navigate = useNavigate();
@@ -164,10 +164,8 @@ const CreateUser = () => {
 
   return (
     <div className='bg-gradient-to-b from-black to-zinc-900 min-h-screen'>
-      {console.log(loggedInUser)}
+ 
       {
-
-
         loggedInUser && loggedInUser.name === "" ? (
           <div className='max-w-2xl mx-auto p-5'>
             <div className='flex bg-zinc-900 rounded-2xl mt-10 flex-col'>
@@ -256,10 +254,7 @@ const CreateUser = () => {
         </div >
 
         )
-
-
       }
-
     </div >
   );
 };

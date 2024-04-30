@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';
 import { contractAddress, contractABI } from '../../../constants/constants';
-
-
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const IncomingRequests = () => {
     const navigate = useNavigate();
     const [requests, setRequests] = useState([]);
     const [customAccessTime, setCustomAccessTime] = useState(0); // Default access time limit in days
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+    const [snackbarMessage, setSnackbarMessage] = useState('');
 
     useEffect(() => {
         const fetchRequests = async () => {
@@ -33,15 +36,28 @@ const IncomingRequests = () => {
         const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
         try {
-            await contract.grantAccess(requester, customAccessTime * 24 * 60 * 60); // Convert days to seconds
+            await contract.grantAccess(requester, customAccessTime * 24 * 60 * 60);
             console.log('Access granted to user:', requester);
-
 
             const updatedRequests = requests.filter(request => request.requester !== requester);
             setRequests(updatedRequests);
+
+            // Show success snackbar
+            setSnackbarSeverity('success');
+            setSnackbarMessage('Access granted successfully!');
+            setSnackbarOpen(true);
         } catch (error) {
             console.error('Error granting access:', error);
+
+            // Show error snackbar
+            setSnackbarSeverity('error');
+            setSnackbarMessage('Failed to grant access. Please try again.');
+            setSnackbarOpen(true);
         }
+    };
+
+    const handleSnackbarClose = () => {
+        setSnackbarOpen(false);
     };
 
     return (
@@ -87,6 +103,13 @@ const IncomingRequests = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Snackbar for success or error messages */}
+            <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
+                <MuiAlert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+                    {snackbarMessage}
+                </MuiAlert>
+            </Snackbar>
         </div>
     );
 };
